@@ -1,0 +1,28 @@
+<%- include('partials/header.ejs') %>
+<body>
+    <div class='todo-container'>
+        <div class='today_container'>
+            <h1 class='work'>Work</h1>
+        </div>
+        <div class='todo-list'>
+            <div class='list'>
+                <% if (!locals.todo) {%>
+                    <p>No todo's to display!</p>
+                <% } else { %>
+                    <% for (td of todo) {%>
+                    <div class='todo'>
+                        <input type="checkbox" class="<%= td %>">
+                        <p><%= td %></p>
+                    </div>
+                    <hr>
+                    <%}%>
+                <%}%>
+            </div>
+            <form action="/work" method="post" class='todo-input'>
+                <input type="text" placeholder='New item' name='todo'>
+                <button>+</button>
+            </form>
+        </div>
+    </div>
+</body>
+<%- include('partials/footer.ejs')%>
